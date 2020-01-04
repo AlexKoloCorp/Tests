@@ -4,12 +4,26 @@
 using namespace std;
 int factorial(int);
 int getSum(int);
+int myFunc(int, int);
 
+int myFunc(int from, int to) {
+	if (from == to)
+	{
+		return from;
+	}
+	if (from > to)
+	{
+		return 0;
+	}
+	return from+myFunc(from+1,to);
+}
 int main()
 {
 	int input;
+	cout << "enter a number foreign";
 	cin >> input;
-	getSum(input);
+	cout << myFunc(0,input) << endl;
+	//getSum(input);
 	//cout << factorial(3) << endl;
 	system("pause");
 }
