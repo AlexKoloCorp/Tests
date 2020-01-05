@@ -18,11 +18,14 @@ int myFunc(int from, int to) {
 	return from+myFunc(from+1,to);
 }
 int main()
-{
-	int input;
-	cout << "enter a number foreign";
-	cin >> input;
-	cout << myFunc(0,input) << endl;
+{	
+	int arr[] = { 4,3,5,7,9,11 };
+	int var = 3[arr + 1] - arr[5] + (arr - 1)[4];
+	int *pvar = &var;
+	cout << *(pvar)+1 << endl;
+	//int input;
+	//cin >> input;
+	//cout << myFunc(0,input) << endl;
 	//getSum(input);
 	//cout << factorial(3) << endl;
 	system("pause");
