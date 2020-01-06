@@ -17,11 +17,15 @@ int main()
 	int arr[] = { 4,3,5,7,9,11 };
 	int var = 3[arr + 1] - arr[5] + (arr - 1)[4];
 	int *pvar = &var;
+	int &vardef=arr[6];
 	cout << *(pvar)+1 << endl;
 	int a=3, b=5;
 	cout << "a=" << a << "\t b=" << b << endl;
 	pointerFoo(&a, &b);
 	cout << "a=" << a << "\t b=" << b << endl;
+	cout << &var << endl;
+	cout << sizeof(arr) << endl;
+	cout << sizeof(pvar)<< endl;
 	//int input;
 	//cin >> input;
 	//cout << myFunc(0,input) << endl;
