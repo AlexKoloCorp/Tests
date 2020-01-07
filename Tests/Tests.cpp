@@ -12,20 +12,34 @@ void pointerFoo(int *pa, int *pb) {
 	*pa = *pb;
 	*pb = tmp;
 }
-int main()
-{	
+void tests() {
 	int arr[] = { 4,3,5,7,9,11 };
 	int var = 3[arr + 1] - arr[5] + (arr - 1)[4];
 	int *pvar = &var;
-	int &vardef=arr[6];
+	int &vardef = arr[6];
 	cout << *(pvar)+1 << endl;
-	int a=3, b=5;
+	int a = 3, b = 5;
 	cout << "a=" << a << "\t b=" << b << endl;
 	pointerFoo(&a, &b);
 	cout << "a=" << a << "\t b=" << b << endl;
 	cout << &var << endl;
 	cout << sizeof(arr) << endl;
-	cout << sizeof(pvar)<< endl;
+	cout << sizeof(pvar) << endl;
+}
+
+template <class T> T swap_foo(T &ra, T &rb) 
+{
+	int temp = ra;
+	ra = rb;
+	rb = temp;
+	return ra, rb;
+}
+int main()
+{	
+	int a=5,b=3;
+	cout << "a=" << a << "\t b=" << b << endl;
+	swap_foo(a,b);
+	cout << "a=" << a << "\t b=" << b << endl;
 	//int input;
 	//cin >> input;
 	//cout << myFunc(0,input) << endl;
