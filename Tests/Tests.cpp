@@ -1,5 +1,5 @@
-
 #include <iostream>
+#include <string>
 
 using namespace std;
 int factorial(int);
@@ -27,24 +27,52 @@ void tests() {
 	cout << sizeof(pvar) << endl;
 }
 
-template <class T> T swap_foo(T &ra, T &rb) 
+template <class T> void swap_foo(T &ra, T &rb) 
 {
-	int temp = ra;
+	T temp = ra;
 	ra = rb;
 	rb = temp;
-	return ra, rb;
+}
+void fillArr(int *const arr, const int size) {
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 10;
+	}
+}
+void showArr(const int *const arr, const int size) {
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << "\t";
+	}
+	cout << endl;
+}
+void pushBack(int *&arr, int &size, int value) {
+	int *midArr = new int[size+1];
+	for (int i = 0; i < size; i++)
+	{
+		midArr[i] = arr[i];
+	}
+	midArr[size++] = value;
+	delete[] arr;
+	arr = midArr;
 }
 int main()
-{	
-	int a=5,b=3;
-	cout << "a=" << a << "\t b=" << b << endl;
-	swap_foo(a,b);
-	cout << "a=" << a << "\t b=" << b << endl;
-	//int input;
-	//cin >> input;
-	//cout << myFunc(0,input) << endl;
-	//getSum(input);
-	//cout << factorial(3) << endl;
+{
+	int size = 10, value = 3;
+	int *arr = new int[size];
+	fillArr(arr, size);
+	showArr(arr, size);
+	pushBack(arr, size, value);
+	showArr(arr, size);
+	delete[] arr;
+
+
+
+	int a = 10,b=3;
+	const int *const pa = &a;
+	a = b;
+	cout << *pa;
+	
 	system("pause");
 }
 int factorial(int N) {
