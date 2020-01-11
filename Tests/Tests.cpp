@@ -56,13 +56,60 @@ void pushBack(int *&arr, int &size, int value) {
 	delete[] arr;
 	arr = midArr;
 }
+void pushFront(int *&arr, int &size, int value) {
+	int *midArr = new int[size + 1];
+	for (int i = 1; i < size+1; i++)
+	{
+		for (int j = 0; j < i; j++)
+		{
+			midArr[i] = arr[j];
+		}
+	}
+	midArr[0] = value;
+	size++;
+	delete[] arr;
+	arr = midArr;
+}
+
+void pushNewValueInArr(int *&arr, int &size, int value, int place) {
+	int *leftSide = new int[place+1];
+	int *rightSide = new int[size-place];
+	int *midArr = new int[size + 1];
+	for (int i = 0; i < place; i++)
+	{
+		leftSide[i] = arr[i];
+	}
+	leftSide[place] = value;
+	for (int i = 0; i < size-place; i++)
+	{
+		rightSide[i] = arr[i + place];
+	}
+	for (int i = 0; i < size+1; i++)
+	{
+		if (i<=place)
+		{
+			midArr[i] = leftSide[i];
+		}
+		if (i > place)
+		{
+			midArr[i] = rightSide[i-(place+1)];
+		}
+	}
+	size++;
+	delete[] arr;
+	arr = midArr;
+	delete[] leftSide;
+	delete[] rightSide;
+}
 int main()
 {
-	int size = 10, value = 3;
+	int size = 10, value = 3, place=10;
 	int *arr = new int[size];
 	fillArr(arr, size);
 	showArr(arr, size);
-	pushBack(arr, size, value);
+	//pushBack(arr, size, value);
+	//pushFront(arr, size, value);
+	pushNewValueInArr(arr, size, value, place);
 	showArr(arr, size);
 	delete[] arr;
 
